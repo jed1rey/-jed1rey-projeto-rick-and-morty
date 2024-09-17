@@ -1,6 +1,19 @@
 import React, {Component} from 'react';
+import {Keyboard} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Container, Form, Input, SubmitButton} from './styles';
+import {
+  Container,
+  Form,
+  Input,
+  SubmitButton,
+  List,
+  User,
+  Avatar,
+  Name,
+  Bio,
+  ProfileButton,
+  ProfileButtonText,
+} from './styles';
 
 import api from '../services/api';
 
@@ -11,23 +24,25 @@ export default class Main extends Component {
   };
 
   handleAddUser = async () => {
-    
-    const {users, newUsers } = this.state;
+    const {users, newUser} = this.state;
 
     const response = await api.get(`/users/${newUser}`);
 
     const data = {
-        name: response.data.name,
-        login: response.data.login,
-        bio: response.data.bio,
-        avatar: response.data.avatar_url,
-    }
+      name: response.data.name,
+      login: response.data.login,
+      bio: response.data.bio,
+      avatar: response.data.avatar_url,
+    };
 
     this.setState({
-        users: [...users, data],
-        newUser: '',
-    })
+      users: [...users, data],
+      newUser: '',
+    });
 
+    Keyboard.dismiss();
+
+    console.log(response.data);
   };
 
   render() {
@@ -49,6 +64,22 @@ export default class Main extends Component {
             <Icon name="add" size={22} color="#fff" />
           </SubmitButton>
         </Form>
+        <List
+          showsVerticalScrollIndicator={false}
+          data={users}
+          keyExtractor={user => user.login}
+          renderItem={({ item }) => (
+            <User>
+              <Avatar source={{uri: item.avatar}} />
+              <Name>{item.name}</Name>
+              <Bio>{item.bio}</Bio>
+
+              <ProfileButton onPress={() => {}}>
+                <ProfileButtonText>Ver Perfil</ProfileButtonText>
+              </ProfileButton>
+            </User>
+          )}
+        />
       </Container>
     );
   }
