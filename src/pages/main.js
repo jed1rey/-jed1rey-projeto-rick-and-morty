@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Keyboard, ActivityIndicator} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import {
   Container,
   Form,
@@ -17,13 +18,12 @@ import {
 } from './styles';
 
 import api from '../services/api';
-
 export default class Main extends Component {
   state = {
     newUser: '',
     users: [],
     loading: false,
-  };
+  }; 
 
   async componentDidMount() {
     const users = await AsyncStorage.getItem('users');
@@ -79,7 +79,7 @@ export default class Main extends Component {
 
   render() {
     const {users, newUser, loading} = this.state;
-
+    
     return (
       <Container>
         <Form>
@@ -110,8 +110,20 @@ export default class Main extends Component {
               <Name>{item.name}</Name>
               <Bio>{item.bio}</Bio>
 
-              <ProfileButton onPress={() => {}}>
+              <ProfileButton onPress={() => {
+                this.props.navigation.navigate('user', {user: item})
+              }}>
                 <ProfileButtonText>Ver Perfil</ProfileButtonText>
+              </ProfileButton>
+              <ProfileButton
+                onPress={() => {
+                  this.setState({
+                    users: this.state.users.filter(
+                      user => user.login !== item.login,
+                    ),
+                  })
+                }} style={{backgroundColor: '#FFC0CB'}}>
+                <ProfileButtonText>Excluir</ProfileButtonText>
               </ProfileButton>
             </User>
           )}
