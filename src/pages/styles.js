@@ -1,4 +1,4 @@
-import {RectButton} from 'react-native-gesture-handler';
+import { RectButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -21,7 +21,7 @@ export const Input = styled.TextInput.attrs({
   background: #eee;
   border: 1px solid #888;
   border-radius: 5px;
-  padding: 0 15px;
+  padding: 0 10px;
 `;
 
 export const SubmitButton = styled(RectButton)`
@@ -150,5 +150,26 @@ export const Bioperfil = styled.Text`
   line-height: 18px;
   color: #999;
   margin-top: 5px;
+  text-align: center;
+`;
+
+export const Status = styled.Text`
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+  text-align: center;
+`;
+
+export const Location = styled.Text`
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+  text-align: center;
+`;
+
+export const Episode = styled.Text`
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
   text-align: center;
 `;

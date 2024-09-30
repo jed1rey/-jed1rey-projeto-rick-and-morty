@@ -1,6 +1,7 @@
+// routes.js
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Main from './pages/main';
 import Login from './pages/login';
@@ -11,27 +12,27 @@ const Stack = createStackNavigator();
 export default function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-          <Stack.Screen
-            name="login"
-            component={Login}
-            options={{
-              title: 'LOGIN',
-              headerTitleAlign: 'center',
-              headerStyle: {
-                backgroundColor: '#3498db',
-              },
-              headerTitleStyle: {
-                fontWeight: 'bold',
-                color: '#fff',
-              },
-            }}
-          />
+      <Stack.Navigator initialRouteName="login">
+        <Stack.Screen
+          name="login"
+          component={Login}
+          options={{
+            title: 'LOGIN',
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: '#3498db',
+            },
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: '#fff',
+            },
+          }}
+        />
         <Stack.Screen
           name="main"
           component={Main}
           options={{
-            title: 'GitHub VIEWER',
+            title: 'Personagens',
             headerTitleAlign: 'center',
             headerLeft: null,
             headerStyle: {
@@ -47,7 +48,7 @@ export default function Routes() {
           name="user"
           component={User}
           options={{
-            title: 'Perfil do Usuário',
+            title: 'Detalhes do Personagem',
             headerTitleAlign: 'center',
             headerStyle: {
               backgroundColor: '#3498db',

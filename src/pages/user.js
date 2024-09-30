@@ -1,58 +1,58 @@
-import React, {Component} from 'react';
+// user.js
+import React, { Component } from 'react';
 import api from '../services/api';
 import {
   Container,
   Header,
   Avatarperfil,
   Nameperfil,
-  Bioperfil,
-  Starred,
-  Stars,
-  OwnerAvatar,
-  Info,
-  Title,
-  Author,
+  Status,
+  Location,
+  Episode,
 } from './styles';
 
 export default class User extends Component {
   state = {
-    stars: [],
+    character: {},
+    firstEpisodeName: '',
   };
 
   async componentDidMount() {
-    const {route} = this.props;
-    const {user} = route.params;
-    const response = await api.get(`/users/${user.login}/starred`);
+    const { route } = this.props;
+    const { user } = route.params;
 
-    this.setState({stars: response.data});
+    const characterData = user;
+
+    if (characterData.episode && characterData.episode.length > 0) {
+      const firstEpisodeUrl = characterData.episode[0];
+      const episodeId = firstEpisodeUrl.split('/').pop();
+      const episodeResponse = await api.get(`/episode/${episodeId}`);
+      const episodeData = episodeResponse.data;
+
+      this.setState({
+        character: characterData,
+        firstEpisodeName: episodeData.name,
+      });
+    } else {
+      this.setState({
+        character: characterData,
+        firstEpisodeName: 'Episódio desconhecido',
+      });
+    }
   }
 
   render() {
-    const {route} = this.props;
-    const {user} = route.params;
-    const {stars} = this.state;
+    const { character, firstEpisodeName } = this.state;
 
     return (
       <Container>
         <Header>
-          <Avatarperfil source={{uri: user.avatar}} />
-          <Nameperfil>{user.name}</Nameperfil>
-          <Bioperfil>{user.bio}</Bioperfil>
+          <Avatarperfil source={{ uri: character.image || '' }} />
+          <Nameperfil>{character.name || 'Nome indisponível'}</Nameperfil>
+          <Status>Status: {character.status || 'Indisponível'}</Status>
+          <Location>Última localização: {character.location?.name || 'Desconhecida'}</Location>
+          <Episode>Primeiro episódio: {firstEpisodeName}</Episode>
         </Header>
-
-        <Stars
-          data={stars}
-          keyExtractor={star => String(star.id)}
-          renderItem={({item}) => (
-            <Starred>
-              <OwnerAvatar source={{uri: item.owner.avatar_url}} />
-              <Info>
-                <Title>{item.name}</Title>
-                <Author>{item.owner.login}</Author>
-              </Info>
-            </Starred>
-          )}
-        />
       </Container>
     );
   }
