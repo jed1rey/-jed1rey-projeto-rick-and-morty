@@ -21,12 +21,14 @@ const Login = () => {
             <TextInput
                 style={ styles.input }
                 placeholder="E-mail"
+                placeholderTextColor="#39ff14"
                 value={email}    
                 onChangeText={setEmail}
             />
             <TextInput
                 style={ styles.input }
                 placeholder="Senha"
+                placeholderTextColor="#39ff14"
                 secureTextEntry={true}
                 value={password}    
                 onChangeText={setPassword}
@@ -44,25 +46,27 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#0a0a18',
     },
     input: {
         borderWidth: 1,
-        borderColor: '#ccc',
+        borderColor: '#ff00ff',
         borderRadius: 5,
         padding: 10,
         marginVertical: 10,
         width: '80%',
+        backgroundColor: '#1b0033',
+        color: '#fff'
     },
     button: {
-        backgroundColor: "#3498db",
+        backgroundColor: "#ff00ff",
         borderRadius: 5,
         padding: 10,
         width: '80%',
         alignItems: 'center'
     },
     buttonText: {
-        color: '#fff',
+        color: '#00ffff',
         fontWeight: 'bold',
         fontSize: 18,
     }

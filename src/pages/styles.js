@@ -4,30 +4,32 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   padding: 30px;
+  background-color: #0a0a18;
 `;
 
 export const Form = styled.View`
   flex-direction: row;
   padding-bottom: 20px;
   border-bottom-width: 1px;
-  border-color: #555;
+  border-color: #00ffff;
 `;
 
 export const Input = styled.TextInput.attrs({
-  placeholderTextColor: '#999',
+  placeholderTextColor: '#39ff14',
 })`
   flex: 1;
   height: 40px;
-  background: #eee;
-  border: 1px solid #888;
+  background: #1b0033;
+  border: 1px solid #ff00ff;
   border-radius: 5px;
   padding: 0 10px;
+  color: #ffffff;
 `;
 
 export const SubmitButton = styled(RectButton)`
   justify-content: center;
   align-items: center;
-  background: #3498db;
+  background: #ff00ff;
   margin-left: 10px;
   padding: 0 12px;
   opacity: ${props => (props.loading ? 0.7 : 1)};
@@ -46,12 +48,12 @@ export const Avatar = styled.Image`
   width: 64px;
   height: 64px;
   border-radius: 32px;
-  background: #eee;
+  background: #2c003e;
 `;
 
 export const Name = styled.Text`
   font-size: 14px;
-  color: #333;
+  color: #00ffcc;
   font-weight: bold;
   margin-top: 4px;
   text-align: center;
@@ -62,7 +64,7 @@ export const Bio = styled.Text.attrs({
 })`
   font-size: 13px;
   line-height: 18px;
-  color: #999;
+  color: #ff00ff;
   margin-top: 5px;
   text-align: center;
 `;
@@ -70,7 +72,7 @@ export const Bio = styled.Text.attrs({
 export const ProfileButton = styled(RectButton)`
   margin-top: 10px;
   align-self: stretch;
-  background-color: #3498db;
+  background-color: #00ffff;
   justify-content: center;
   align-items: center;
   height: 36px;
@@ -79,7 +81,7 @@ export const ProfileButton = styled(RectButton)`
 export const ProfileButtonText = styled.Text`
   font-size: 14px;
   font-weight: bold;
-  color: #fff;
+  color: #000000;
   text-transform: uppercase;
 `;
 
@@ -90,7 +92,7 @@ export const Stars = styled.FlatList.attrs({
 `;
 
 export const Starred = styled.View`
-  background: #f5f5f5;
+  background: #0a0a18;
   border-radius: 4px;
   padding: 10px 15px;
   margin-bottom: 20px;
@@ -102,7 +104,7 @@ export const OwnerAvatar = styled.Image`
   width: 42px;
   height: 42px;
   border-radius: 21px;
-  background: #eee;
+  background: #ff00ff;
 `;
 
 export const Info = styled.View`
@@ -115,12 +117,12 @@ export const Title = styled.Text.attrs({
 })`
   font-size: 15px;
   font-weight: bold;
-  color: #333;
+  color: #00ff00;
 `;
 
 export const Author = styled.Text`
   font-size: 13px;
-  color: #666;
+  color: #39ff14;
   margin-top: 2px;
 `;
 
@@ -134,12 +136,12 @@ export const Avatarperfil = styled.Image`
   width: 100px;
   height: 100px;
   border-radius: 50px;
-  background: #eee;
+  background: #2c003e;
 `;
 
 export const Nameperfil = styled.Text`
   font-size: 16px;
-  color: #333;
+  color: #ff00ff;
   font-weight: bold;
   margin-top: 4px;
   text-align: center;
@@ -148,28 +150,28 @@ export const Nameperfil = styled.Text`
 export const Bioperfil = styled.Text`
   font-size: 15px;
   line-height: 18px;
-  color: #999;
+  color: #00ffcc;
   margin-top: 5px;
   text-align: center;
 `;
 
 export const Status = styled.Text`
   font-size: 14px;
-  color: #333;
+  color: #ffffff;
   margin-top: 10px;
   text-align: center;
 `;
 
 export const Location = styled.Text`
   font-size: 14px;
-  color: #333;
+  color: #ffffff;
   margin-top: 10px;
   text-align: center;
 `;
 
 export const Episode = styled.Text`
   font-size: 14px;
-  color: #333;
+  color: #ffffff;
   margin-top: 10px;
   text-align: center;
 `;
