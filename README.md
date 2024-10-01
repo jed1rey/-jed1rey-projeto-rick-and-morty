@@ -1,6 +1,6 @@
 # projeto-rick-and-morty
 Projeto final da matéria de Desenvolvimento Mobile, Fatec Franca, 2024-2, primeiro bimestre
-NOME: PAULA CRISTINA ABIB TEIXEIRA
+## NOME: PAULA CRISTINA ABIB TEIXEIRA
 
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
